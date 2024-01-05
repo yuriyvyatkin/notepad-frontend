@@ -1,0 +1,670 @@
+body {
+  font-weight: 400;
+  font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,Helvetica Neue, sans-serif;
+  line-height: 26px;
+
+  color: #000000;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1600 900\'%3E%3Cdefs%3E%3ClinearGradient id=\'a\' x1=\'0\' x2=\'0\' y1=\'1\' y2=\'0\'%3E%3Cstop offset=\'0\' stop-color=\'%230066FF\'/%3E%3Cstop offset=\'1\' stop-color=\'%234BD0A0\'/%3E%3C/linearGradient%3E%3ClinearGradient id=\'b\' x1=\'0\' x2=\'0\' y1=\'0\' y2=\'1\'%3E%3Cstop offset=\'0\' stop-color=\'%23EB236B\'/%3E%3Cstop offset=\'1\' stop-color=\'%235D00F5\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill=\'%23FFF\' fill-opacity=\'0\' stroke-miterlimit=\'10\'%3E%3Cg stroke=\'url(%23a)\' stroke-width=\'2\'%3E%3Cpath transform=\'translate(0 0)\' d=\'M1409 581 1450.35 511 1490 581z\'/%3E%3Ccircle stroke-width=\'4\' transform=\'rotate(0 800 450)\' cx=\'500\' cy=\'100\' r=\'40\'/%3E%3Cpath transform=\'translate(0 0)\' d=\'M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z\'/%3E%3C/g%3E%3Cg stroke=\'url(%23b)\' stroke-width=\'4\'%3E%3Cpath transform=\'translate(0 0)\' d=\'M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z\'/%3E%3Crect stroke-width=\'8\' transform=\'rotate(0 1089 759)\' x=\'1039\' y=\'709\' width=\'100\' height=\'100\'/%3E%3Cpath transform=\'rotate(0 1400 132)\' d=\'M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* общие стили */
+
+button {
+  padding: 10px 15px;
+  border: 1px solid #000000;
+  border-radius: 15px;
+
+  font-size: inherit;
+
+  background-color: #ffffff;
+
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #000000;
+}
+
+a {
+  font-size: 22px;
+  text-decoration: none;
+
+  color: #808080;
+}
+
+a:hover {
+  color: #0000ff;
+}
+
+a[class^='message']:hover {
+  transform: scale(1.3);
+}
+
+audio {
+  align-self: center;
+
+  width: 100%;
+
+  background: #f1f3f4;
+}
+
+/* чат */
+
+.notepad-widget {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.notepad-widget__area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 500px;
+  height: 90vh;
+  padding: 20px 3px 3px 3px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+
+  background: linear-gradient(180deg, #0066ff, #0082ff, #0097ff, #00a7fb, #00b4e4, #00bfcb, #00c8b3, #4bd0a0);
+}
+
+.notepad-widget__messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+
+  height: 0;
+  border: 1px solid #000000;
+  border-bottom: none;
+
+  background-color: #e4ddd3;
+  background-image: url('../img/bg.png');
+}
+
+.notepad-widget__messages-container::before {
+  content: attr(data-api-message);
+  position: sticky;
+  top: 50%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  font-weight: 800;
+  font-size: 25px;
+  font-family: Verdana, sans-serif;
+  line-height: initial;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.notepad-widget__messages-container::after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: inherit;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  font-weight: 800;
+  font-size: 35px;
+  font-family: Verdana, sans-serif;
+  line-height: initial;
+  text-align: center;
+
+  color: #99cc33;
+  background-image: repeating-linear-gradient(18deg, #333333, #333333 30px, transparent 30px, transparent 60px, #333333 60px), repeating-linear-gradient(108deg, #333333, #333333 30px, transparent 30px, transparent 60px, #333333 60px), repeating-linear-gradient(198deg, #333333, #333333 30px, transparent 30px, transparent 60px, #333333 60px), repeating-linear-gradient(288deg, #333333, #333333 30px, transparent 30px, transparent 60px, #333333 60px);
+  background-repeat: no-repeat;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-size: 3px calc(100% + 63.09px), calc(100% + 63.09px) 3px, 3px calc(100% + 63.09px) , calc(100% + 63.09px) 3px;
+
+  animation: borderAnimation 1s infinite linear;
+
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
+
+@keyframes borderAnimation {
+  from {
+    background-position: 0 0, -63.09px 0, 100% -63.09px, 0 100%;
+  }
+  to {
+    background-position: 0 -63.09px, 0 0, 100% 0, -63.09px 100%;
+  }
+}
+
+.notepad-widget__messages {
+  padding: 15px 20px 15px 20px;
+}
+
+/* сообщения */
+
+.message {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+  border-radius: 7.5px;
+
+  color: #494949;
+  background-color: #ffffff;
+  box-shadow: 0 1px .5px rgba(0, 0, 0, .13);
+}
+
+.message:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.message__text {
+  overflow-y: auto;
+
+  max-height: 240px;
+
+  overflow-wrap: anywhere;
+}
+
+.message__thumbnail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  overflow: hidden;
+
+  width: 100%;
+  max-height: 260px;
+}
+
+.message__thumbnail-label {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  overflow-wrap: anywhere;
+
+  color: #ffffff;
+  background: rgba(0, 0, 0, .75);
+}
+
+.message__footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 1px;
+
+  font-size: 14px;
+
+  color: #9a9a9a;
+
+  user-select: none;
+}
+
+.message__download-link:hover {
+  color: #008000;
+}
+
+.pinned {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  z-index: 2147483647;
+
+  width: 360px;
+
+  box-shadow: 0 0 15px #4d90fe;
+}
+
+.message__pin:hover,
+.pinned .message__pin {
+  color: #000000;
+}
+
+.with-pinned-child .message:not(.pinned) .message__pin {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.pinned .message__text {
+  display: -webkit-box;
+
+  word-break: break-word;
+
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.message__star:hover,
+.favorite .message__star {
+  color: #eebc1d;
+
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
+
+.notepad__form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* поле ввода чата */
+
+.notepad-widget__input {
+  height: 62px;
+  min-height: 31px;
+  min-height: 50px;
+  padding-left: 90px;
+  border-radius: 0 0 5px 5px;
+
+  font: inherit;
+
+  resize: vertical;
+}
+
+.notepad-widget__input:focus {
+  border: 1px solid #4d90fe;
+  outline: none;
+
+  box-shadow: 0 0 5px  #4d90fe;
+
+  -webkit-box-shadow: 0 0 5px  #4d90fe;
+}
+
+/* скрепка добавления файлов */
+
+.paperclip {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+
+  width: 36px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+
+  font-size: 26px;
+
+  background: none;
+
+  cursor: pointer;
+}
+
+.paperclip:hover {
+  transform: scale(1.1);
+}
+
+/* чекбокс Геолокации */
+
+.checkmark-container input {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark-container {
+  position: absolute;
+  bottom: 10px;
+  left: 48px;
+  display: block;
+
+  font-size: 18px;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.form_hidden .checkmark-container {
+  display: none;
+}
+
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+
+  background-color: #cccccc;
+
+  transition: .4s;
+  z-index: 0;
+}
+
+.checkmark:hover {
+  box-shadow: inset 17px 17px 16px #b3b3b3,
+  inset -17px -17px 16px #ffffff;
+}
+
+.checkmark-container input:checked ~ .checkmark {
+  background-color: limegreen;
+  box-shadow: none;
+
+  transform: rotateX(360deg);
+}
+
+.checkmark-container input:checked ~ .checkmark:hover {
+  box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.checkmark-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkmark-container .checkmark:after {
+  top: .35em;
+  left: .6em;
+
+  width: .25em;
+  height: .5em;
+  border: solid white;
+  border-width: 0 .15em .15em 0;
+
+  box-shadow: .1em .1em 0 0 rgba(0,0,0,.3);
+
+  transform: rotate(45deg);
+}
+
+.checkmark-container::before {
+  content: 'ГЕО';
+  position: absolute;
+  top: -30px;
+  left: 2px;
+
+  font-size: 18px;
+  letter-spacing: 2px;
+
+  color: #000000;
+
+  zoom: .7;
+}
+
+@supports (-moz-appearance:none) {
+  .checkmark-container::before {
+    top: -25px;
+    left: 0;
+
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+}
+
+/* DnD */
+
+.drop-zone-overlay {
+  height: 100%;
+}
+
+.drop-zone-overlay::after {
+  content: 'Перетащите файл сюда';
+}
+
+.drop-zone-overlay::before {
+  content: '';
+}
+
+.drop-zone-overlay.extension-error::after {
+  content: 'Расширение переданного файла не допустимо!';
+
+  color: #ff9966;
+}
+
+.drop-zone__input {
+  display: none;
+}
+
+/* cообщения API */
+
+.api-says.request-execution::before {
+  color: #1a4d00;
+}
+
+.api-says.connection-resumed::before {
+  color: #1a4d00;
+}
+
+.api-says.error::before {
+  color: #852100;
+}
+
+.api-says .notepad-widget__messages {
+  opacity: .3;
+}
+
+.form_hidden,
+.api-says + .notepad__form {
+  visibility: hidden;
+}
+
+/* модальное окно Геолокации */
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, .5);
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  box-sizing: border-box;
+  width: 400px;
+  max-width: 400px;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding: 36px 20px;
+  border-radius: 15px;
+
+  background: #ffffff;
+}
+
+.modal__header {
+  margin: 0;
+
+  font-weight: 400;
+}
+
+.modal__message {
+  margin: 35px 0 0 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form__label,
+.modal-form__input,
+.modal-form__buttons {
+  margin-top: 15px;
+}
+
+.modal-form__buttons {
+  display: flex;
+}
+
+.modal-form__button-cancel {
+  margin-left: auto;
+}
+
+.modal-form__button-enter {
+  margin-left: 15px;
+}
+
+.modal__advice {
+  margin-top: 35px;
+}
+
+/* анимация подключения к серверу */
+
+.status-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.status-loading.active {
+  display: block;
+}
+
+.status-loading.active ~ div {
+  display: none;
+}
+
+/* боковая навигация */
+
+.side-nav {
+  display: none;
+}
+
+@media (pointer: fine) and (min-width: 812px) {
+  .side-nav {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    z-index: -1;
+    display: block;
+
+    text-align: center;
+  }
+
+  .side-nav a {
+    position: absolute;
+    left: -140px;
+
+    width: 130px;
+    padding: 15px 20px;
+    border-radius: 0 5px 5px 0;
+
+    font-size: 20px;
+    text-decoration: none;
+
+    color: #ffffff;
+
+    transition: .6s;
+  }
+
+  .side-nav a.active:before {
+    content: '\2713';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    color: #ffffff;
+  }
+
+  .side-nav a:hover {
+    left: 0;
+  }
+
+  a.favorites {
+    top: 20px;
+
+    color: #333333;
+    background-color: #eebc1d;
+  }
+
+  .text {
+    top: 80px;
+
+    background-color: #eb236b;
+  }
+
+  .images {
+    top: 140px;
+
+    background-color: #4bd0a0;
+  }
+
+  .audio {
+    top: 200px;
+
+    background-color: #0066ff;
+  }
+
+  .video {
+    top: 260px;
+
+    background-color: #5d00f5;
+  }
+
+  .only-video .message:not([data-type='video']) {
+    display: none;
+  }
+
+  .only-audio .message:not([data-type='audio']) {
+    display: none;
+  }
+
+  .only-text .message:not([data-type='text']) {
+    display: none;
+  }
+
+  .only-images .message:not([data-type='image']) {
+    display: none;
+  }
+
+  .only-favorites .message:not(.favorite) {
+    display: none;
+  }
+
+  .side-nav.activated a:not(.active, .favorites) {
+    pointer-events: none;
+  }
+}

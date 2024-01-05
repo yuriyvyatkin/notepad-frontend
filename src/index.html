@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Записная книжка</title>
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!-- анимация при подключении к серверу -->
+  <img class="status-loading active" src="./img/loading.svg" alt="иконка загрузки приложения">
+
+  <!-- чат -->
+  <div class="notepad-widget">
+    <div class="notepad-widget__area">
+      <div class="notepad-widget__messages-container drop-zone" data-api-message="">
+        <div class="notepad-widget__messages lazy-loading"></div>
+      </div>
+      <form class="notepad__form">
+        <textarea class="notepad-widget__input" cols="30" placeholder="Введите ваше сообщение" autocomplete="off" data-geo-response=""></textarea>
+        <label class="checkmark-container">
+          <input type="checkbox" checked="checked" class="geolocation-toggler" name="geo">
+          <div class="checkmark"></div>
+        </label>
+        <input class="drop-zone__input" type="file" name="myFile" accept="image/*,video/*,audio/*">
+        <button class="paperclip" type="button"><i class="fa fa-paperclip"></i></button>
+      </form>
+    </div>
+    <div class="side-nav">
+      <a href="#" class="favorites">Избранное</a>
+      <a href="#" class="text">Текст</a>
+      <a href="#" class="images">Изображения</a>
+      <a href="#" class="audio">Аудио</a>
+      <a href="#" class="video">Видео</a>
+    </div>
+  </div>
+
+  <!-- модальное окно геолокации -->
+  <div class="modal">
+    <div class="modal__container">
+      <h3 class="modal__header"></h3>
+      <p class="modal__message"></p>
+      <form class="modal__form">
+        <label class="modal-form__label" for="coordinates">Например: 51.50851, -0.12572</label>
+        <input class="modal-form__input" type="text" id="coordinates" name="coordinates" maxlength="23">
+        <div class="modal-form__buttons">
+          <button class="modal-form__button-cancel" type="button">Отмена</button>
+          <button class="modal-form__button-enter" type="submit">Ввод</button>
+        </div>
+      </form>
+      <a class="modal__advice" href="https://support.google.com/maps/answer/18539?hl=ru&co=GENIE.Platform%3DDesktop" target="_blank">Как узнать координаты места</a>
+    </div>
+  </div>
+</body>
+
+</html>
