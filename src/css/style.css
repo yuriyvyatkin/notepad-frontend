@@ -266,8 +266,9 @@ audio {
   display: none;
 }
 
-.message__download-link {
-  margin-inline: 10px;
+.message__coordinates,
+.message__timestamp {
+  max-width: min-content;
 }
 
 .notepad__form {
@@ -354,6 +355,7 @@ audio {
   position: relative;
   top: 0;
   left: 0;
+  z-index: 0;
 
   width: 1.5em;
   height: 1.5em;
@@ -362,7 +364,6 @@ audio {
   background-color: #cccccc;
 
   transition: .4s;
-  z-index: 0;
 }
 
 .checkmark:hover {
@@ -686,7 +687,8 @@ audio {
     display: block;
   }
 
-  .message__download-link {
-    margin-inline: 0;
+  .message__coordinates,
+  .message__timestamp {
+    max-width: initial;
   }
 }
