@@ -88,16 +88,16 @@ export default class NotepadMessagesMaker {
     if (coords.lat !== 0 && coords.lon !== 0) {
       geo = `
         <span class="message__coordinates">[${parseInt(coords.lat * 100000, 10) / 100000}, ${parseInt(coords.lon * 100000, 10) / 100000}]</span>
-        <a class="message__google-maps-link" href="http://www.google.com/maps/place/${coords.lat},${coords.lon}" target="_blank">&#128065;</a>
+        <a class="message__google-maps-link" href="http://www.google.com/maps/place/${coords.lat},${coords.lon}" target="_blank"><i class="fa fa-eye"></i></a>
       `;
     }
 
     html += `
         <div class="message__footer">
           ${geo}
-          ${type !== 'text' ? `<a class="message__download-link" href="${source}" download="${name}">&#11123;</a>` : ''}
-          <a class="message__pin" href="#">&#128392;</a>
-          <a class="message__star" href="#">&#9733;</a>
+          ${type !== 'text' ? `<a class="message__download-link" href="${source}" download="${name}"><i class="fa fa-download"></i></a>` : ''}
+          <a class="message__pin" href="#"><i class="fa fa-thumb-tack"></i></a>
+          <a class="message__star" href="#"><i class="fa fa-star"></i></a>
           <span class="message__timestamp">${timestamp.replace(' ', ' | ')}</span>
         </div>
       </div>

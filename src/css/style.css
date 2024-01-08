@@ -261,6 +261,15 @@ audio {
   -webkit-text-stroke-color: #000000;
 }
 
+.message__star,
+.message__pin {
+  display: none;
+}
+
+.message__download-link {
+  margin-inline: 10px;
+}
+
 .notepad__form {
   display: flex;
   flex-direction: column;
@@ -670,5 +679,14 @@ audio {
 
   .side-nav.activated a:not(.active, .favorites) {
     pointer-events: none;
+  }
+
+  .message__star,
+  .message__pin {
+    display: block;
+  }
+
+  .message__download-link {
+    margin-inline: 0;
   }
 }
