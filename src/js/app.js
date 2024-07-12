@@ -16,7 +16,7 @@ const notepadInput = notepad.querySelector('.notepad-widget__input');
 
 const loading = document.querySelector('.status-loading');
 
-const hostname = 'notepad-backend-d3cf5990ad0d.herokuapp.com';
+const hostname = 'notepad-backend-pro-04d97b7a3391.herokuapp.com';
 
 const api = new API(`https://${hostname}`, loading, messagesContainer, messages, notepadInput);
 
